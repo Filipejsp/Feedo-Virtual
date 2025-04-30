@@ -1,0 +1,11 @@
+{
+  "appId": "com.petvirtual.app",
+  "appName": "Pet Virtual",
+  "webDir": ".",
+  "server": {
+    "androidScheme": "https"
+  },
+  "android": {
+    "allowMixedContent": true
+  }
+} 

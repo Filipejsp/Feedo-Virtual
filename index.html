@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Feedo Pet</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Tela Inicial -->
+    <div class="start-screen">
+        <h1>Feedo Pet</h1>
+        <div class="input-container">
+            <input type="text" id="petName" placeholder="Nome do seu pet" maxlength="15">
+            <button id="startGame">Iniciar</button>
+        </div>
+    </div>
+
+    <!-- Hub do Jogo -->
+    <div class="game-hub hidden">
+        <!-- Header com Status -->
+        <header class="game-header">
+            <div class="resources">
+                <div class="bits-container">
+                    <span id="bits">0</span> bits
+                </div>
+                <div class="bps-container">
+                    <span id="bps">0</span> BPS
+                </div>
+            </div>
+            <button id="toggleSound" class="sound-btn">🔊</button>
+        </header>
+
+        <!-- Pet e Status -->
+        <div class="pet-container">
+            <div id="pet" class="pet">
+                <div class="robot-face">
+                    <div class="eyes">
+                        <div class="eye left"></div>
+                        <div class="eye right"></div>
+                    </div>
+                    <div class="mouth"></div>
+                </div>
+            </div>
+            <div class="pet-status">
+                <div class="status-bar">
+                    <div class="status-label">Energia</div>
+                    <div class="status-value" id="energy">100</div>
+                </div>
+                <div class="status-bar">
+                    <div class="status-label">Humor</div>
+                    <div class="status-value" id="mood">100</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ações -->
+        <div class="actions">
+            <button id="feed" class="action-btn">🍖 Alimentar</button>
+            <button id="play" class="action-btn">🎮 Brincar</button>
+            <button id="sleep" class="action-btn">😴 Dormir</button>
+        </div>
+
+        <!-- Missões -->
+        <div class="missions">
+            <h2>Missões Diárias</h2>
+            <div id="missionsList" class="missions-list"></div>
+            <div class="missions-progress">
+                Completadas: <span id="completedMissions">0</span>/3
+            </div>
+        </div>
+
+        <!-- Upgrades -->
+        <div class="upgrades">
+            <h2>Upgrades</h2>
+            <div class="upgrades-list">
+                <div class="upgrade-category">
+                    <h3>Produção</h3>
+                    <div id="productionUpgrades"></div>
+                </div>
+                <div class="upgrade-category">
+                    <h3>Temporários</h3>
+                    <div id="temporaryUpgrades"></div>
+                </div>
+                <div class="upgrade-category">
+                    <h3>Visuais</h3>
+                    <div id="visualUpgrades"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="audio.js"></script>
+    <script src="pet.js"></script>
+    <script src="missions.js"></script>
+    <script src="game.js"></script>
+</body>
+</html> 

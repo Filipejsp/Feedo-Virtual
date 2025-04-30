@@ -1,0 +1,430 @@
+/* Reset e Variáveis */
+:root {
+    --neon-primary: #00ff9d;
+    --neon-secondary: #ff00ff;
+    --bg-dark: #1a1a1a;
+    --text-light: #ffffff;
+    --spacing-unit: 1rem;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Tela Inicial */
+.start-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: var(--spacing-unit);
+    text-align: center;
+}
+
+.start-screen h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    text-shadow: 0 0 10px var(--neon-primary);
+    color: var(--neon-primary);
+}
+
+.input-container {
+    width: 100%;
+    max-width: 300px;
+}
+
+#petName {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 2px solid var(--neon-primary);
+    background: transparent;
+    color: var(--text-light);
+    border-radius: 8px;
+    font-size: 1.1rem;
+}
+
+#startGame {
+    width: 100%;
+    padding: 1rem;
+    background: var(--neon-primary);
+    border: none;
+    border-radius: 8px;
+    color: var(--bg-dark);
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#startGame:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px var(--neon-primary);
+}
+
+/* Game Hub */
+.game-hub {
+    padding: var(--spacing-unit);
+}
+
+.hidden {
+    display: none;
+}
+
+/* Header */
+.game-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    margin-bottom: 1rem;
+}
+
+.resources {
+    display: flex;
+    gap: 1rem;
+}
+
+.bits-container, .bps-container {
+    font-size: 1.2rem;
+    color: var(--neon-primary);
+}
+
+.sound-btn {
+    background: transparent;
+    border: 2px solid var(--neon-primary);
+    color: var(--neon-primary);
+    padding: 0.5rem;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+/* Pet Container */
+.pet-container {
+    text-align: center;
+    margin: 2rem 0;
+}
+
+.pet {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+    background: var(--neon-primary);
+    border-radius: 50%;
+    box-shadow: 0 0 20px var(--neon-primary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.pet.low-energy {
+    animation: pulse 1.5s ease-in-out infinite;
+    box-shadow: 0 0 10px var(--neon-primary);
+}
+
+/* Robot Face */
+.robot-face {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+    animation: float 3s ease-in-out infinite;
+}
+
+.eyes {
+    display: flex;
+    gap: 20px;
+}
+
+.eye {
+    width: 16px;
+    height: 16px;
+    background: var(--bg-dark);
+    border-radius: 50%;
+    position: relative;
+    box-shadow: 0 0 8px var(--neon-primary);
+    transition: all 0.3s ease;
+}
+
+.eye::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--neon-primary);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.eye.tired::before {
+    opacity: 0.3;
+}
+
+.eye.sleeping {
+    transform: scaleY(0.1);
+    background: var(--neon-primary);
+}
+
+.eye.sleeping::after {
+    opacity: 0;
+}
+
+.eye.happy {
+    transform: scale(1.1);
+}
+
+.eye.sad {
+    transform: scale(0.9) rotate(180deg);
+}
+
+.mouth {
+    width: 40px;
+    height: 8px;
+    background: var(--bg-dark);
+    border-radius: 4px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+    --mouth-height: 14px;
+}
+
+.mouth.happy {
+    height: var(--mouth-height);
+    border-radius: 20px;
+}
+
+.mouth.sad {
+    height: 4px;
+    transform: rotate(180deg);
+}
+
+.mouth.sleeping {
+    height: 4px;
+    width: 30px;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+@keyframes sleepFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+.robot-face.sleeping {
+    animation: sleepFloat 4s ease-in-out infinite;
+}
+
+.pet-status {
+    margin-top: 1rem;
+}
+
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+}
+
+/* Ações */
+.actions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin: 2rem 0;
+}
+
+.action-btn {
+    padding: 1rem;
+    background: transparent;
+    border: 2px solid var(--neon-primary);
+    color: var(--neon-primary);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1.1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.action-btn:active {
+    transform: scale(0.95);
+}
+
+.action-btn::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 5px;
+    height: 5px;
+    background: var(--neon-primary);
+    opacity: 0;
+    border-radius: 100%;
+    transform: scale(1, 1) translate(-50%);
+    transform-origin: 50% 50%;
+}
+
+.action-btn:active::after {
+    animation: ripple 0.6s ease-out;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+}
+
+@keyframes ripple {
+    0% {
+        transform: scale(0, 0);
+        opacity: 0.5;
+    }
+    100% {
+        transform: scale(20, 20);
+        opacity: 0;
+    }
+}
+
+/* Missões */
+.missions {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 2rem 0;
+}
+
+.missions h2 {
+    color: var(--neon-secondary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.missions-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.mission-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: all 0.3s ease;
+}
+
+.mission-item:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateX(5px);
+}
+
+.missions-progress {
+    text-align: center;
+    margin-top: 1rem;
+    color: var(--neon-primary);
+}
+
+/* Upgrades */
+.upgrades {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 2rem 0;
+}
+
+.upgrades h2 {
+    color: var(--neon-secondary);
+    margin-bottom: 1rem;
+    text-align: center;
+}
+
+.upgrade-category {
+    margin: 1rem 0;
+}
+
+.upgrade-category h3 {
+    color: var(--neon-primary);
+    margin-bottom: 0.5rem;
+}
+
+.upgrade-item {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 8px;
+    margin: 0.5rem 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Rescue Button */
+.rescue-btn {
+    background: var(--neon-primary);
+    color: var(--bg-dark);
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.rescue-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px var(--neon-primary);
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .actions {
+        grid-template-columns: 1fr;
+    }
+
+    .pet {
+        width: 120px;
+        height: 120px;
+    }
+
+    .game-header {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .resources {
+        flex-direction: column;
+        align-items: center;
+    }
+}
+
+/* Animações */
+@keyframes glow {
+    0% { box-shadow: 0 0 5px var(--neon-primary); }
+    50% { box-shadow: 0 0 20px var(--neon-primary); }
+    100% { box-shadow: 0 0 5px var(--neon-primary); }
+}
+
+.pet {
+    animation: glow 2s infinite;
+} 
